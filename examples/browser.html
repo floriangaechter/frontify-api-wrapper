@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Frontify API wrapper</title>
+  </head>
+  <body>
+    <script type="module">
+      import { createClient } from "/dist/frontify.mjs";
+
+      const client = await createClient({
+        baseUrl: "",
+        clientId: "",
+        // token: "",
+      });
+
+      const result = await client.query({
+        query: `
+          query CurrentUser {
+            currentUser {
+              id
+              email
+              avatar
+              name
+            }
+          }
+        `,
+        variables: {},
+      });
+
+      console.log(result.data);
+    </script>
+  </body>
+</html>
